@@ -1,0 +1,31 @@
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func calcularMontante(principal float64, taxa float64, tempo int) float64 {
+	montante := principal * math.Pow(1+taxa/100, float64(tempo))
+	return montante
+}
+
+func main() {
+	var principal, taxa float64
+	var tempo int
+
+	fmt.Println("Cálculo de juros compostos")
+	fmt.Println("-------------------------")
+
+	fmt.Print("Digite o valor principal: ")
+	fmt.Scanln(&principal)
+
+	fmt.Print("Digite a taxa de juros (em porcentagem): ")
+	fmt.Scanln(&taxa)
+
+	fmt.Print("Digite o período de tempo (em anos): ")
+	fmt.Scanln(&tempo)
+
+	montante := calcularMontante(principal, taxa, tempo)
+	fmt.Printf("O montante após %d anos será de R$%.2f\n", tempo, montante)
+}
