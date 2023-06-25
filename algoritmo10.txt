@@ -1,0 +1,30 @@
+package main
+
+import (
+	"fmt"
+)
+
+func calcularMediaPonderada(valores []float64, pesos []float64) float64 {
+	if len(valores) != len(pesos) {
+		panic("O número de valores e pesos deve ser igual")
+	}
+
+	total := 0.0
+	somaPesos := 0.0
+
+	for i := 0; i < len(valores); i++ {
+		total += valores[i] * pesos[i]
+		somaPesos += pesos[i]
+	}
+
+	mediaPonderada := total / somaPesos
+	return mediaPonderada
+}
+
+func main() {
+	valores := []float64{5.5, 7.8, 6.3, 9.1}
+	pesos := []float64{0.2, 0.3, 0.4, 0.1}
+
+	media := calcularMediaPonderada(valores, pesos)
+	fmt.Printf("A média ponderada é: %.2f\n", media)
+}
